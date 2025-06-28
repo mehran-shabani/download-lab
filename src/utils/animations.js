@@ -1,3 +1,4 @@
+// animations.js
 // Page transition animations
 export const pageVariants = {
   initial: { opacity: 0, x: 100 },

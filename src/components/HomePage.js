@@ -1,3 +1,4 @@
+// HomePage.js
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Smartphone, Globe, Heart } from 'lucide-react';
@@ -12,84 +13,165 @@ const HomePage = ({ setCurrentPage, setSlideIndex }) => {
     setCurrentPage(page);
   };
 
+  const styles = {
+    container: {
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      position: 'relative',
+      overflow: 'hidden',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '1rem'
+    },
+    content: {
+      background: 'rgba(255, 255, 255, 0.95)',
+      backdropFilter: 'blur(20px)',
+      borderRadius: '1.5rem',
+      padding: '3rem 2rem',
+      textAlign: 'center',
+      boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.2)',
+      border: '1px solid rgba(255, 255, 255, 0.2)',
+      maxWidth: '600px',
+      width: '100%',
+      position: 'relative',
+      zIndex: 10
+    },
+    headerLine: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      height: '3px',
+      background: 'linear-gradient(90deg, #667eea, #764ba2, #4CAF50, #2196F3)',
+      borderRadius: '1.5rem 1.5rem 0 0'
+    },
+    title: {
+      fontSize: 'clamp(1.8rem, 6vw, 2.8rem)',
+      fontWeight: 'bold',
+      color: '#333',
+      marginBottom: 'clamp(15px, 4vw, 20px)',
+      background: 'linear-gradient(135deg, #333, #555)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
+      lineHeight: 1.2
+    },
+    subtitle: {
+      color: '#666',
+      marginBottom: 'clamp(25px, 6vw, 45px)',
+      fontSize: 'clamp(1rem, 3.5vw, 1.3rem)',
+      lineHeight: 1.6,
+      position: 'relative'
+    },
+    subtitleLine: {
+      content: '""',
+      position: 'absolute',
+      bottom: 'clamp(-10px, -3vw, -15px)',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: 'clamp(40px, 10vw, 60px)',
+      height: '3px',
+      background: 'linear-gradient(90deg, transparent, #667eea, transparent)',
+      borderRadius: '2px'
+    },
+    buttonsContainer: {
+      display: 'flex',
+      gap: 'clamp(15px, 4vw, 25px)',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      perspective: '1000px'
+    },
+    footer: {
+      marginTop: 'clamp(25px, 6vw, 40px)',
+      color: '#666',
+      fontSize: 'clamp(0.8rem, 2.5vw, 0.95rem)',
+      borderTop: '1px solid rgba(0, 0, 0, 0.1)',
+      paddingTop: 'clamp(15px, 4vw, 25px)',
+      position: 'relative',
+      lineHeight: 1.5
+    },
+    footerHeart: {
+      position: 'absolute',
+      top: 'clamp(-8px, -2vw, -10px)',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      background: 'white',
+      padding: '0 clamp(8px, 2vw, 10px)',
+      fontSize: 'clamp(16px, 4vw, 20px)'
+    }
+  };
+
   return (
-    <motion.div
-      className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 relative overflow-hidden"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
-      <FloatingElements />
+      <motion.div
+          style={styles.container}
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+      >
+        <FloatingElements />
 
-      <div className="flex items-center justify-center min-h-screen p-4 relative z-10">
         <motion.div
-          className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 md:p-12 max-w-2xl w-full shadow-2xl border border-white/20"
-          variants={itemVariants}
+            style={styles.content}
+            variants={itemVariants}
         >
-          {/* Header gradient line */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-green-500 rounded-t-3xl" />
+          <div style={styles.headerLine}></div>
 
-          {/* Logo */}
           <Logo />
 
-          {/* Title */}
           <motion.h1
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 text-center bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent"
-            variants={itemVariants}
+              style={styles.title}
+              variants={itemVariants}
           >
             اپلیکیشن هلسا
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.div
-            className="text-gray-600 text-lg md:text-xl text-center mb-8 leading-relaxed relative"
-            variants={itemVariants}
+              style={styles.subtitle}
+              variants={itemVariants}
           >
             <p>راهنمای نصب و استفاده از اپلیکیشن هلسا</p>
-            <p className="text-base md:text-lg">دکتر حسین شبانی - پزشک آنلاین</p>
-            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent rounded-full" />
+            <p style={{fontSize: 'clamp(0.9rem, 3vw, 1.1rem)'}}>دکتر حسین شبانی - پزشک آنلاین</p>
+            <div style={styles.subtitleLine}></div>
           </motion.div>
 
-          {/* Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-6 justify-center"
-            variants={itemVariants}
+              style={styles.buttonsContainer}
+              variants={itemVariants}
           >
             <ActionButton
-              onClick={() => handlePageChange('android')}
-              icon={Smartphone}
-              title="اپلیکیشن اندروید"
-              description="راهنمای نصب روی Android"
-              color="from-green-500 to-green-600"
-              hoverColor="from-green-400 to-green-500"
+                onClick={() => handlePageChange('android')}
+                icon={Smartphone}
+                title="اپلیکیشن اندروید"
+                description="راهنمای نصب روی Android"
+                color="linear-gradient(135deg, #4CAF50, #45a049)"
+                hoverColor="rgba(76, 175, 80, 0.4)"
             />
 
             <ActionButton
-              onClick={() => handlePageChange('web')}
-              icon={Globe}
-              title="وب اپلیکیشن"
-              description="راهنمای استفاده آنلاین"
-              color="from-blue-500 to-blue-600"
-              hoverColor="from-blue-400 to-blue-500"
+                onClick={() => handlePageChange('web')}
+                icon={Globe}
+                title="وب اپلیکیشن"
+                description="راهنمای استفاده آنلاین"
+                color="linear-gradient(135deg, #2196F3, #1976D2)"
+                hoverColor="rgba(33, 150, 243, 0.4)"
             />
           </motion.div>
 
-          {/* Footer */}
           <motion.div
-            className="mt-10 pt-8 border-t border-gray-200 text-center text-gray-600 relative"
-            variants={itemVariants}
+              style={styles.footer}
+              variants={itemVariants}
           >
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white px-4">
-              <Heart className="w-6 h-6 text-red-500 animate-pulse" fill="currentColor" />
+            <div style={styles.footerHeart}>
+              <Heart style={{width: '1.5rem', height: '1.5rem', color: '#ef4444', fill: 'currentColor'}} />
             </div>
-            <p className="text-sm leading-relaxed">
+            <p>
               خدمات پزشکی آنلاین ۲۴ ساعته<br />
               آباده، اقلید، صغاد، بهمن
             </p>
           </motion.div>
         </motion.div>
-      </div>
-    </motion.div>
+      </motion.div>
   );
 };
 
