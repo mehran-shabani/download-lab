@@ -131,7 +131,7 @@ const HomePage = ({ setCurrentPage, setSlideIndex }) => {
               variants={itemVariants}
           >
             <p>راهنمای نصب و استفاده از اپلیکیشن هلسا</p>
-            <p style={{fontSize: 'clamp(0.9rem, 3vw, 1.1rem)'}}>دکتر حسین شبانی - پزشک آنلاین</p>
+            <p style={{fontSize: 'clamp(0.9rem, 3vw, 1.1rem)'}}>پزشک آنلاین</p>
             <div style={styles.subtitleLine}></div>
           </motion.div>
 
